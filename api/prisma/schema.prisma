@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  bus       Json?
+  ticket    Ticket[]
+  createdAt DateTime @default(now())
+  updaredAt DateTime @updatedAt
+}
+
+model Bus {
+  id             String   @id @default(uuid())
+  totalseats     Int      @default(60)
+  availableseats Int      @default(60)
+  available      Boolean  @default(true)
+  active         Boolean  @default(false)
+  destination    String
+  time           String
+  users          Json
+  ticket         Ticket[]
+  createdAt      DateTime @default(now())
+  updaredAt      DateTime @updatedAt
+}
+
+model Ticket {
+  id          String   @id @default(uuid())
+  name        String
+  deperturetime DateTime
+  traveltime    DateTime
+  seats       Int
+  destination String
+  price       Int
+  user        User     @relation(fields: [userid], references: [id])
+  userid      String
+  bus         Bus      @relation(fields: [busid], references: [id])
+  busid       String
+  createdAt   DateTime @default(now())
+  updaredAt   DateTime @updatedAt
+}
