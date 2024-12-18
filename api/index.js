@@ -21,6 +21,10 @@ app.get("/check", (req, res) => {
     res.json(info);
   });
 });
+app.post("/logout", (req, res) => {
+  res.cookie("token", "").json("ok");
+});
+
 app.listen(8000, () => {
   console.log("runnig in port 8000");
 });

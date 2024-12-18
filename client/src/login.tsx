@@ -37,7 +37,7 @@ function Login() {
   return (
     <div>
       <h1 className="text-center text-2xl font-bold mt-7">Login</h1>
-      <form onSubmit={login}>
+      <form>
         <div className="w-8/12 mx-auto mt-20 flex flex-col gap-4">
           <label className="input input-bordered flex items-center gap-2">
             Name
@@ -57,7 +57,7 @@ function Login() {
               placeholder="password"
             />
           </label>
-          <button onClick={login} className="btn btn-primary">
+          <button type="submit" onClick={login} className="btn btn-primary">
             submit
           </button>
         </div>
