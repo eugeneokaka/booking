@@ -1,6 +1,9 @@
+import { useCounterStore } from "../store";
 import Nav from "./nav";
 
 function Hero() {
+  const user = useCounterStore((state) => state.user);
+  console.log(user);
   return (
     <div>
       <div
