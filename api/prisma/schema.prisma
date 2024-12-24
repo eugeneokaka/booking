@@ -30,6 +30,8 @@ model Bus {
   availableseats Int      @default(60)
   available      Boolean  @default(true)
   active         Boolean  @default(false)
+  date           String
+  deperturetime  DateTime
   destination    String
   time           String
   users          Json
@@ -39,17 +41,17 @@ model Bus {
 }
 
 model Ticket {
-  id          String   @id @default(uuid())
-  name        String
+  id            String   @id @default(uuid())
+  name          String
   deperturetime DateTime
-  traveltime    DateTime
-  seats       Int
-  destination String
-  price       Int
-  user        User     @relation(fields: [userid], references: [id])
-  userid      String
-  bus         Bus      @relation(fields: [busid], references: [id])
-  busid       String
-  createdAt   DateTime @default(now())
-  updaredAt   DateTime @updatedAt
+  traveltime    Int
+  seats         Int
+  destination   String
+  price         Int
+  user          User     @relation(fields: [userid], references: [id])
+  userid        String
+  bus           Bus      @relation(fields: [busid], references: [id])
+  busid         String
+  createdAt     DateTime @default(now())
+  updaredAt     DateTime @updatedAt
 }
