@@ -33,7 +33,7 @@ router.post("/signup", async (req, res) => {
           password: hashedPassword,
         },
       });
-      return res.json({ messege: "user was created succesfully", newuser });
+      return res.json({ mess: "user was created succesfully", newuser });
     } catch (err) {
       return res.json(err);
     }

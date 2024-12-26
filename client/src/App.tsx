@@ -5,6 +5,7 @@ import "./App.css";
 import Login from "./login";
 import Home from "./home";
 import Book from "./book";
+import Signup from "./signup";
 function App() {
   return (
     <>
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
           <Route path="book" element={<Book />} />
         </Routes>
       </Router>
